@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 100px auto 0 auto;
+            box-shadow: 0 0 10px black;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+        .wrap {
+            position: absolute;
+            width: 600px;
+            height: 400px;
+        }
+        .container .wrap img {
+            position: absolute;
+            width: 600px;
+            height: 400px;
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+        .container .wrap img.active {
+            opacity: 1;
+        }
+        .container .buttons {
+            position: absolute;
+            right: 150px;
+            bottom: 20px;
+            width: 150px;
+            height: 10px;
+            z-index: 2;
+        }
+        .container .buttons span {
+            margin-left: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            border-radius: 50%;
+            background: transparent;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        .container .buttons span.on {
+            background-color: red;
+        }
+        .container .arrow {
+            position: absolute;
+            top: 35%;
+            color: black;
+            padding: 0px 14px;
+            border-radius: 50%;
+            font-size: 50px;
+            z-index: 2;
+            display: none;
+        }
+        .container .arrow_left {
+            left: 10px;
+        }
+        .container .arrow_right {
+            right: 10px;
+        }
+        .container:hover .arrow {
+            display: block;
+        }
+        .container .arrow:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <img class="active" src="./img/1.jpg" alt="">
+            <img src="./img/2.jpg" alt="">
+            <img src="./img/3.jpg" alt="">
+            <img src="./img/4.jpg" alt="">
+            <img src="./img/5.jpg" alt="">
+        </div>
+        <div class="buttons">
+            <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <a href="javascript:;" class="arrow arrow_left">&lt;</a>
+        <a href="javascript:;" class="arrow arrow_right">&gt;</a>
+    </div>
+    <script>
+        var container = document.querySelector(".container");
+        var next = document.querySelector(".arrow_right");
+        var prev = document.querySelector(".arrow_left");
+        // 数字
+        var index = 0;
+        var dots = document.getElementsByTagName("span");
+        function showCurrentDot() {
+            for (var i=0, len=dots.length; i<len; i++ ) {
+                dots[i].className = "";
+                imgs[i].classList = "";
+            }
+            dots[index].className = "on";
+            imgs[index].className = "active";
+            current = index;
+        }
+        var imgs = document.getElementsByTagName("img");
+        var current = 0;
+        var dots = document.getElementsByTagName("span");
+
+        function showOff() {
+            imgs[current].className = "";
+            dots[current].classList = "";
+        }
+
+        function showOn() {
+            imgs[current].className = "active";
+            dots[current].classList = "on"
+        }
+
+        function changeShow() {
+            showOff();
+            current++;
+            if (current >= imgs.length) {
+                current = 0;
+            }
+            showOn();
+        }
+
+        var timer = setInterval(changeShow, 2000);
+
+        container.onmouseover = function() {
+            clearInterval(timer);
+        }
+        container.onmouseout = function() {
+            timer = setInterval(changeShow, 2000);
+        }
+
+        
+        // 点击数字
+        for (var i=0, len=dots.length; i < len; i++) {
+            (function(i) {
+                dots[i].onclick = function() {
+                    index = i;
+                    showCurrentDot();
+                }
+            })(i);
+        }
+    </script>
+</body>
+</html>
