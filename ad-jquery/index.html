@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .ad {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 330px;
+            height: 220px;
+            background-image: url(../img/1.jpg);
+            background-size: cover;
+            display: none;
+        }
+        .ad span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 18px;
+            background-color: aliceblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>右下角弹出</div>
+    <div class="ad">
+        <span>关闭</span>
+    </div>
+    <script>
+        $(function() {
+            $('.ad').slideDown(1000).slideUp(1000).fadeIn(1000).children("span").click(function() {
+                $(this).parent().fadeOut(1000);
+            });
+        })
+    </script>
+</body>
+</html>
