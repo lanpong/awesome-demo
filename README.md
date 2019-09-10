@@ -10,3 +10,7 @@ awesome demo
 ## Jquery
 
 - [右下角弹出](https://0x0ffff.github.io/awesome-demo/ad-jquery/)
+
+## CSS
+
+- [背景字体](https://0x0ffff.github.io/awesome-demo/background-font/)

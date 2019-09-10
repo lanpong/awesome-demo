@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Background</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .bg {
+            width: 100vw;
+            height: 100vh;
+            background: url('../img/5.jpg') no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        span {
+            padding: 10px 10px;
+            background: white;
+            font-size: 5.5em;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <span>HELLO</span>
+</body>
+</html>
