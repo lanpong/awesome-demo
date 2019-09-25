@@ -8,10 +8,10 @@
     <style>
         #box {
             position: absolute;
-            left: 300px;
-            top: 200px;
-            width: 250px;
-            height: 250px;
+            left: 100px;
+            top: 100px;
+            width: 150px;
+            height: 150px;
             background-color: black;
             text-align: center;
             user-select: none;
@@ -20,11 +20,12 @@
 </head>
 <body>
     <div class="root">
-        <div id="box" style="left:300px;top:200px" onselectstart="return false">盒子</div>
+        <div id="box" style="left:100px;top:100px" onselectstart="return false">盒子</div>
     </div>
     <script>
         let o, X, Y;
-        document.getElementById("box").onmousedown = function(e) {
+        let box = document.getElementById("box");
+        box.onmousedown = function(e) {
             o = this;
             e = e || event;
             X = e.clientX - parseInt(o.style.left);
@@ -41,6 +42,14 @@
         document.onmouseup = function() {
             o = "";
         }
+        box.addEventListener('touchmove', (e) => {
+            //e.preventDefault();
+            if (e.targetTouches.length === 1) {
+                let touch = e.targetTouches[0];
+                box.style.left = touch.pageX + 'px';
+                box.style.top = touch.pageY + 'px';
+            }
+        }, false)
     </script>
 </body>
 </html>
