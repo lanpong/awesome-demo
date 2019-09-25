@@ -26,10 +26,18 @@
         let o, X, Y;
         let box = document.getElementById("box");
         box.onmousedown = function(e) {
+            e.preventDefault();
             o = this;
             e = e || event;
             X = e.clientX - parseInt(o.style.left);
             Y = e.clientY - parseInt(o.style.top);
+        }
+        box.touchstart = function(e) {
+            e.preventDefault();
+            o = this;
+            e = e.targetTouches[0] || event.targetTouches[0];
+            X = e.pageX - parseInt(o.style.left);
+            Y = e.pageY - parseInt(o.style.top);
         }
         document.onmousemove = function(e) {
             if (!o) {
@@ -43,11 +51,11 @@
             o = "";
         }
         box.addEventListener('touchmove', (e) => {
-            //e.preventDefault();
+            e.preventDefault();
             if (e.targetTouches.length === 1) {
                 let touch = e.targetTouches[0];
-                box.style.left = touch.pageX + 'px';
-                box.style.top = touch.pageY + 'px';
+                box.style.left = touch.pageX  - X + "px";
+                box.style.top = touch.pageY - Y + "px";
             }
         }, false)
     </script>
