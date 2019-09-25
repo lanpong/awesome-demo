@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag box</title>
+    <style>
+        #box {
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            width: 250px;
+            height: 250px;
+            background-color: black;
+            text-align: center;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div id="box" style="left:300px;top:200px" onselectstart="return false">盒子</div>
+    </div>
+    <script>
+        let o, X, Y;
+        document.getElementById("box").onmousedown = function(e) {
+            o = this;
+            e = e || event;
+            X = e.clientX - parseInt(o.style.left);
+            Y = e.clientY - parseInt(o.style.top);
+        }
+        document.onmousemove = function(e) {
+            if (!o) {
+                return;
+            }
+            e = e || event;
+            o.style.left = e.clientX - X + "px";
+            o.style.top = e.clientY - Y + "px";
+        }
+        document.onmouseup = function() {
+            o = "";
+        }
+    </script>
+</body>
+</html>

@@ -7,6 +7,8 @@ awesome demo
 
 - [轮播图（淡入淡出）](https://0x0ffff.github.io/awesome-demo/scroll-view-opacity/)
 
+- [拖拽](https://0x0ffff.github.io/awesome-demo/drag-box/)
+
 ## Jquery
 
 - [右下角弹出](https://0x0ffff.github.io/awesome-demo/ad-jquery/)
