@@ -11,6 +11,8 @@ awesome demo
 
 - [拖拽](https://0x0ffff.github.io/awesome-demo/drag-box/)
 
+- [普通的表单](https://0x0ffff.github.io/awesome-demo/form-test/)
+
 ## Jquery
 
 - [右下角弹出](https://0x0ffff.github.io/awesome-demo/ad-jquery/)

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    用户名：<input type="text" name="" id="username"><br>
+    密码：<input type="password" id="password"> <br>
+    类型 <input type="radio" name="type" id="admin" value="admin"><label for="admin">管理员</label>
+        <input type="radio" name="type" id="user" value="user"><label for="user">普通用户</label><br>
+    <button type="submit" id="submit">提交</button>
+    <button id="reset">重置</button>
+</body>
+<script>
+  var submit= document.getElementById("submit")
+  var reset= document.getElementById("reset")
+  var username = document.getElementById("username")
+  var password = document.getElementById("password")
+  var type = document.getElementsByName("type");
+  submit.addEventListener("click", function() {
+    if (username.value == "") {
+      alert("请输入用户名！")
+    } else if (password.value == "") {
+      alert("请输入用密码！")
+    } else if (type[0].checked == false && type[1].checked == false) {
+      alert("请选择用户类型！")
+    } else if (username.value != "" || password.value != "" || type[0].checked == true || type[1].checked == true) {
+      var message = "";
+      for(var i=0; i<type.length; i++) {
+        if (type[i].checked) {
+          
+          if (type[i].value == "admin") {
+            message = "管理员："
+          } else {
+            message = "普通用户："
+          }
+        }
+      }
+
+      var info = message + username.value + "  登录成功！"
+
+      alert(info)
+    }
+  })
+
+  reset.addEventListener("click", function() {
+    username.value = ""
+    password.value = ""
+  })
+</script>
+</html>
